@@ -17,15 +17,15 @@ jobs:
     - name: Build and push OpenSignServer
       uses: docker/build-push-action@v2
       with:
-        context: apps/OpenSignServer
-        file: apps/OpenSignServer/Dockerhubfile
+        context: ./apps/OpenSignServer
+        file: ./apps/OpenSignServer/Dockerhubfile
         push: true
         tags: bonitech/opensignserver:main
     
     - name: Build and push OpenSign
       uses: docker/build-push-action@v2
       with:
-        context: apps/OpenSign
-        file: apps/OpenSign/Dockerhubfile
+        context:./apps/OpenSign
+        file: ./apps/OpenSign/Dockerhubfile
         push: true
         tags: bonitech/opensign:main
