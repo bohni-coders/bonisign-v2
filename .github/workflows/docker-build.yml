@@ -1,31 +1,31 @@
 on:
-     push:
-       branches: [ main ]
+  push:
+    branches: [main]
 
-   jobs:
-     build:
-       runs-on: ubuntu-latest
-       steps:
-       - uses: actions/checkout@v2
-       
-       - name: Login to DockerHub
-         uses: docker/login-action@v1
-         with:
-           username: ${{ secrets.DOCKERHUB_USERNAME }}
-           password: ${{ secrets.DOCKERHUB_TOKEN }}
-       
-       - name: Build and push OpenSignServer
-         uses: docker/build-push-action@v2
-         with:
-           context: ./apps/OpenSignServer
-           file: ./apps/OpenSignServer/Dockerhubfile
-           push: true
-           tags: bonitech/opensignserver:main
-       
-       - name: Build and push OpenSign
-         uses: docker/build-push-action@v2
-         with:
-           context: ./apps/OpenSign
-           file: ./apps/OpenSign/Dockerhubfile
-           push: true
-           tags: bonitech/opensign:main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Login to DockerHub
+      uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+    
+    - name: Build and push OpenSignServer
+      uses: docker/build-push-action@v2
+      with:
+        context: ./apps/OpenSignServer
+        file: ./apps/OpenSignServer/Dockerhubfile
+        push: true
+        tags: bonitech/opensignserver:main
+    
+    - name: Build and push OpenSign
+      uses: docker/build-push-action@v2
+      with:
+        context: ./apps/OpenSign
+        file: ./apps/OpenSign/Dockerhubfile
+        push: true
+        tags: bonitech/opensign:main
